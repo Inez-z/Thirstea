@@ -22,19 +22,22 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-8 ps-2"><div class="ps-2">
-                    <form action="/action_page.php">
+                    <form action="/insertpembelian" method="POST" id="myForm">
+                        @csrf
                         <div class="mb-3 mt-3">
                             <label for="tanggal" class="form-label">Tanggal pembelian</label>
                             <!-- <input type="text" class="form-control" id="email" placeholder="Masukkan nama akun" name="email"> -->
                             <div class="col">
-                                <input type="date" name="tanggal" id="tanggal" class="form-control">
+                                <input type="date" name="tanggal" id="tanggal" class="form-control" value="{{now()}}">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="bahan" class="form-label">Nama bahan</label>
                             <select id="bahan" class="form-select" name="bahan">
-                                            <option value="pegawai" selected>Daun teh</option>
-                                            <option value=“owner”>Gulaku</option>
+                                <option value=""></option>
+                                @foreach($value as $bahan)
+                                <option value="{{$bahan->id_bahan}}">{{$bahan->nama_bahan}}</option>
+                                @endforeach
                              </select>
                             <!-- <input type="email" class="form-control" id="pwd" placeholder="Masukkan email akun" name="pswd"> -->
                         </div>
@@ -57,5 +60,16 @@
             </div>
         </div>
     </div>   
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let today = new Date();
+            let formattedDate = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+            document.querySelector("#tanggal").value = formattedDate;
+        });
+    </script>
+
 </body>
 </html>
+
+

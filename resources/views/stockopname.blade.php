@@ -25,7 +25,7 @@
                         <h2 class="card-title mt-3 ms-2 mb-3 fw-bold">Master Stock Opname</h2>
                     </div>
                 </div>
-                        <div class="col-4"><button type="button" class="btn btn-secondary w-75 mt-3">Tambah SO</button>
+                        <div class="col-4"><a href="/tambahso" class="btn btn-secondary w-75 mt-3">Tambah SO</a>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -59,21 +59,6 @@
                                         </form>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Gulaku (gr)</td>
-                                    <td>2000</td>
-                                    <td>2000</td>
-                                    <td>0</td>
-                                    <td>01-02-2024</td>
-                                    <td>
-                                        <form action="#" method="POST">
-                                            @csrf
-                                            <Input type="hidden" name="id_rak" value="">
-                                            <button type="submit" style="border: none; background: none;"><i class="bi bi-trash3-fill"></i></button>
-                                            <button type="submit" style="border: none; background: none;"><i class="bi bi-pencil-square"></i></button>
-                                        </form></td>
-                                </tr>  
                             </tbody>
                         </table>
                     </div>

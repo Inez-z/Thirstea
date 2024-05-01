@@ -25,7 +25,7 @@
                         <h2 class="card-title mt-3 ms-2 mb-3 fw-bold">Master Data Pembelian</h2>
                     </div>
                 </div>
-                        <div class="col-4"><button type="button" class="btn btn-secondary w-75 mt-3">Tambah pembelian</button>
+                        <div class="col-4"><a href="/tambahpembelian" class="btn btn-secondary w-75 mt-3">Tambah pembelian</a>
                     </div>
                 </div>
                 <div class="row mt-3">

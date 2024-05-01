@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class produkModel extends Model
+class soModel extends Model
 {
     use HasFactory;
 
+
     // Specify the table associated with the model
-    protected $table = 'produk';
+    protected $table = 'stock_opname';
 
     // Specify the primary key column name if it's different from 'id'
-    protected $primaryKey = 'id_produk';
+    protected $primaryKey = 'id_stock_opname';
 
     protected $keyType = 'string';
     public $incrementing = false;
@@ -23,13 +23,8 @@ class produkModel extends Model
     public $timestamps = true;
 
     // Define fillable columns
-    protected $fillable = ['nama_produk', 'harga_jual', 'modal'];
+    protected $fillable = ['id_produk', 'tanggal_so', 'penambahan', 'pengurangan', 'stock_akhir'];
 
-    public function produk(){
-        $sql = "SELECT id_produk, nama_produk, modal, harga_jual FROM produk ORDER BY id_produk ASC;";
-        $value = DB::select($sql);
-
-        return $value;
-    }
+    
 
 }

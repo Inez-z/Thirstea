@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class transaksiModel extends Model
 {
@@ -48,5 +49,35 @@ class transaksiModel extends Model
         $value = DB::select($sql);
 
         return $value;
+    }
+
+
+    public function insertNewPenjualan($inputs, $time){
+        list($tanggal, $waktu) = explode(' ', $inputs['tanggal']);//untuk pisah tanggal dan jam
+        $sql = "INSERT INTO `penjualan`(`tanggal`, `jam`, `total`, `uang_diterima`, `metode_pembayaran`, `id_pengguna`, `created_at`, `updated_at`) VALUES ('".$tanggal."','".$waktu."','".$inputs['totalHarga']."','".$inputs['uangTerima']."','".$inputs['metode']."','".Session::get('id_pengguna')."','".$time."','".$time."')";
+        $insert = DB::insert($sql);
+
+        $id_penjualan = DB::table('penjualan')->orderBy('id_penjualan', 'desc')->first();
+
+        return $id_penjualan;
+    }
+
+    public function insertPenjualanDetail($inputs, $penjualanInsert, $time){
+        // $sql = "INSERT INTO `detail_penjualan`(`id_penjualan`, `id_produk`, `jumlah_produk`, `created_at`, `updated_at`) VALUES ('".$penjualanInsert->id_penjualan."','[value-3]','[value-4]','[value-5]','[value-6]')";
+
+        foreach ($inputs['id_produk'] as $key => $id_produk) {
+            $jumlah = $inputs['jumlah'][$key];
+            
+            // Lakukan operasi insert ke dalam database untuk setiap pasangan nilai
+            $insert = DB::table('detail_penjualan')->insert([
+                'id_penjualan' => $penjualanInsert->id_penjualan,
+                'id_produk' => $id_produk,
+                'jumlah_produk' => $jumlah,
+                'created_at' => $time,
+                'updated_at' => $time
+            ]);
+        }
+        
+        return $insert;
     }
 }

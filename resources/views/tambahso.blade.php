@@ -38,10 +38,6 @@
                              </select>
                         </div>
                         <div class="mb-3">
-                            <label for="hargaBeli" class="form-label">Total harga beli</label>
-                            <input type="number" class="form-control" id="hargaBeli" placeholder="Masukkan harga beli" name="hargabeli">
-                        </div>
-                        <div class="mb-3">
                             <label for="jmlHitung" class="form-label">Jumlah hitung</label>
                             <input type="number" class="form-control" id="jmlHitung" placeholder="Masukkan jumlah hitung" name="jumlahhitung">
                         </div>

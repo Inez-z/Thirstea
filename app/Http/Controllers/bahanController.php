@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\userModel;
 use App\Models\bahanModel;
+use App\Models\pembelianModel;
 use Illuminate\Support\Facades\Session;
 
 class bahanController extends Controller
@@ -38,4 +39,17 @@ class bahanController extends Controller
 
 
     }
+
+    public function inputBahanBaru(Request $req){
+        $inputBahan = $req->input('bahan');
+        $inputTakaran = $req->input('jenisTakaran');
+
+        $input = $inputBahan . ' (' . $inputTakaran . ')';
+        
+        bahanModel::create([
+            'nama_bahan' => $input
+        ]);
+        
+        return redirect('/bahan');
+    } 
 }
